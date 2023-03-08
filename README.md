@@ -129,7 +129,7 @@ Clicking on the ellipsis and clicking 'Delete' will delete a user's old 'chirp.'
 <br/>
 <br/>
 
-A user can also visit other user's page. Notice that since the current user is signed in as 'phillipfoo' and NOT 'anotherUser' they are unable to update display names/bios and cannot create 'chirps' here.
+A user can also visit another user's page. Notice that since the current user is signed in as 'phillipfoo' and NOT 'anotherUser' they are unable to update display names/bios and cannot create 'chirps' here.
 ![anotherUser_page](/screenshots/19.png)
 <br/>
 <br/>
