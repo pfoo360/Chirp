@@ -114,7 +114,7 @@ const SignIn: NextPage = () => {
             </button>
           </form>
           <p className="text-gray-900 text-sm my-3">
-            Don't have an account?{" "}
+            Don&apos;t have an account?
             <Link
               href="/signup"
               className="text-blue-500 underline decoration-dotted"

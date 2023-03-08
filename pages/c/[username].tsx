@@ -7,6 +7,7 @@ import CreateChirp from "@/components/CreateChirp/CreateChirp";
 import ReadChirps from "@/components/ReadChirps/ReadChirps";
 import Bio from "@/components/Bio/Bio";
 import AccountDoesNotExist from "@/components/AccountDoesNotExist/AccountDoesNotExist";
+import Head from "next/head";
 
 interface UserPageProps {
   usernameNotFound: boolean;
@@ -16,9 +17,22 @@ interface UserPageProps {
 const UserPage: NextPage<UserPageProps> = ({ usernameNotFound, username }) => {
   const userCtx = useUser();
 
-  if (usernameNotFound) return <AccountDoesNotExist />;
+  if (usernameNotFound)
+    return (
+      <>
+        <Head>
+          <title>{` /Chirp`}</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <AccountDoesNotExist />;
+      </>
+    );
   return (
     <>
+      <Head>
+        <title>{`Profile /Chirp`}</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <NavBar />
       <Bio username={username} />
       {userCtx?.id === username.id ? <CreateChirp /> : null}
