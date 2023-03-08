@@ -49,14 +49,14 @@ const ReadChirps: FC<ReadChipsProps> = ({ username }) => {
             return page.chirps.map((chirp, index) => {
               if (page.chirps.length - 1 === index) {
                 return (
-                  <Card key={chirp.id} chirpInfo={chirp} ref={lastElementRef} />
+                  <Card key={chirp.id} chirp={chirp} ref={lastElementRef} />
                 );
               }
-              return <Card key={chirp.id} chirpInfo={chirp} />;
+              return <Card key={chirp.id} chirp={chirp} />;
             });
           }
           return page.chirps.map((chirp, index) => {
-            return <Card key={chirp.id} chirpInfo={chirp} />;
+            return <Card key={chirp.id} chirp={chirp} />;
           });
         })}
       {isLoading ? (
