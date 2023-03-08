@@ -9,12 +9,12 @@ import UpdateChirp from "@/components/UpdateChirp/UpdateChirp";
 type Chirp = RouterOutputs["chirp"]["readChirp"]["chirps"][0];
 
 interface CardProps {
-  chirp: Chirp;
+  chirpInfo: Chirp;
   //ref?: (node: HTMLDivElement | null) => void
 }
 
 const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ chirp: { id, chirp, user, createdAt, updatedAt } }, ref) => {
+  ({ chirpInfo: { id, chirp, user, createdAt, updatedAt } }, ref) => {
     const [isFormOpen, setIsFormOpen] = useState(false);
 
     const content = (
