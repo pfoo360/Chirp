@@ -10,14 +10,14 @@ export default function Home() {
       <NavBar />
       <p className="text-sm font-semibold p-5 text-gray-900">
         <span className="font-extrabold text-sm text-gray-900">Chirp</span> is a
-        very rudimentary Twitter clone. Users are able to view other user's
-        'chirps.' If a user creates an account they can also create their own
-        posts (max 240 character). Users can also update their display names,
-        add a small bio, and update/delete their old chirps! <br />
+        very rudimentary Twitter clone. Users are able to view other user&apos;s
+        &apos;chirps.&apos; If a user creates an account they can also create
+        their own posts (max 240 character). Users can also update their display
+        names, add a small bio, and update/delete their old chirps! <br />
         <br />
         Chirp is arguably the best social media app due to the fact that you
-        cannot interact with other user's postings- therefore you can never take
-        time out of your precious day getting into arguments with random
+        cannot interact with other user&apos;s postings- therefore you can never
+        take time out of your precious day getting into arguments with random
         internet netizens!
         <br />
         <br />
