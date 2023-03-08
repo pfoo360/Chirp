@@ -140,7 +140,11 @@ const UpdateDescription: FC<UpdateDescriptionProps> = ({
             close
           </div>
           <div
-            className="text-sm ml-2 text-gray-400 hover:underline decoration-dotted hover:cursor-pointer hover:text-sky-400"
+            className={`text-sm ml-2 hover:underline decoration-dotted hover:cursor-pointer ${
+              newDescriptionError
+                ? "text-rose-500 hover:text-rose-500"
+                : "text-gray-400 hover:text-sky-400"
+            }`}
             onClick={handleSubmit}
           >
             update

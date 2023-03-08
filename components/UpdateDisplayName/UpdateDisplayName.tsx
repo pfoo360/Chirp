@@ -133,7 +133,7 @@ const UpdateDisplayName: FC<UpdateDisplayNameProps> = ({
         {children}
         <div
           onClick={handleOpenEditForm}
-          className="text-sm ml-1 text-gray-400 hover:underline decoration-dotted hover:cursor-pointer hover:text-sky-400"
+          className="text-sm ml-[2px] text-gray-400 hover:underline decoration-dotted hover:cursor-pointer hover:text-sky-400"
         >
           update
         </div>
@@ -151,7 +151,7 @@ const UpdateDisplayName: FC<UpdateDisplayNameProps> = ({
           onChange={handleUpdateDisplayNameInputChange}
           ref={inputRef}
           disabled={isSubmitting}
-          className={`font-bold text-3xl my-2 text-gray-900 bg-transparent border-0 border-b appearance-none focus:outline-none disabled:text-gray-200 ${
+          className={`font-bold text-3xl w-4/5 my-2 text-gray-900 bg-transparent border-0 border-b appearance-none focus:outline-none disabled:text-gray-200 ${
             !updatedDisplayNameError ? "border-sky-300" : "border-rose-500"
           }`}
         />
@@ -163,7 +163,11 @@ const UpdateDisplayName: FC<UpdateDisplayNameProps> = ({
           close
         </div>
         <div
-          className="text-sm ml-2 text-gray-400 hover:underline decoration-dotted hover:cursor-pointer hover:text-sky-400"
+          className={`text-sm ml-2 hover:underline decoration-dotted hover:cursor-pointer ${
+            updatedDisplayNameError
+              ? "text-rose-500 hover:text-rose-500"
+              : "text-gray-400 hover:text-sky-400"
+          }`}
           onClick={handleSubmit}
         >
           update

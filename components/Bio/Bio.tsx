@@ -32,7 +32,7 @@ const Bio: FC<BioProps> = ({ username }) => {
       </UpdateDisplayName>
       <h4 className="text-gray-500 text-base mb-4">{`@${data.username}`}</h4>
       <UpdateDescription userId={data.id} description={data.description}>
-        <p className="break-all text-gray-900 text-base mb-5">
+        <p className="break-words text-gray-900 text-base mb-5">
           {data.description}
         </p>
       </UpdateDescription>

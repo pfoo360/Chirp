@@ -1,6 +1,6 @@
 import { MouseEvent, useState, FC, Dispatch, SetStateAction } from "react";
 import DeleteChirp from "@/components/DeleteChirp/DeleteChirp";
-import UpdateChirp from "@/components/UpdateChirp/UpdateChirp";
+import UpdateChirpBtn from "@/components/UpdateChirpBtn/UpdateChirpBtn";
 import useUser from "@/hooks/useUser";
 
 interface CardEllipsisProps {
@@ -37,7 +37,10 @@ const CardEllipsis: FC<CardEllipsisProps> = ({ id, author, setIsFormOpen }) => {
           />
           <div className="absolute z-[1000] rounded-xl border drop-shadow-xl right-8">
             <DeleteChirp id={id} authorId={author.id} />
-            <UpdateChirp authorId={author.id} setIsFormOpen={setIsFormOpen} />
+            <UpdateChirpBtn
+              authorId={author.id}
+              setIsFormOpen={setIsFormOpen}
+            />
           </div>
         </>
       ) : null}

@@ -4,7 +4,7 @@ import moment from "moment";
 import { RouterOutputs } from "@/types/";
 import { forwardRef } from "react";
 import CardEllipsis from "@/components/CardEllipsis/CardEllipsis";
-import UpdateChirpForm from "@/components/UpdateChirpForm/UpdateChirpForm";
+import UpdateChirp from "@/components/UpdateChirp/UpdateChirp";
 
 type Chirp = RouterOutputs["chirp"]["readChirp"]["chirps"][0];
 
@@ -17,43 +17,45 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
   ({ chirp: { id, chirp, user, createdAt, updatedAt } }, ref) => {
     const [isFormOpen, setIsFormOpen] = useState(false);
 
-    const content = !isFormOpen ? (
-      <>
-        <div className="flex flex-row justify-between w-full">
-          <div className="flex flex-row items-center">
-            <Link
-              href={`/c/${user.username}`}
-              className="font-bold text-gray-900 hover:underline text-base"
-            >
-              {user.displayName}
-            </Link>
-            <p className="text-gray-600 ml-1">{`@${user.username}`}</p>
-            <span className="mx-1 text-gray-600">·</span>
-            {createdAt === updatedAt ? (
-              <p className="text-gray-600 hover:underline">
-                {moment(createdAt).format("MMM DD")}
-              </p>
-            ) : (
-              <>
+    const content = (
+      <UpdateChirp
+        id={id}
+        originalText={chirp}
+        userId={user.id}
+        isFormOpen={isFormOpen}
+        setIsFormOpen={setIsFormOpen}
+      >
+        <>
+          <div className="flex flex-row justify-between w-full">
+            <div className="flex flex-row items-center">
+              <Link
+                href={`/c/${user.username}`}
+                className="font-bold text-gray-900 hover:underline text-base"
+              >
+                {user.displayName}
+              </Link>
+              <p className="text-gray-600 ml-1">{`@${user.username}`}</p>
+              <span className="mx-1 text-gray-600">·</span>
+              {createdAt === updatedAt ? (
                 <p className="text-gray-600 hover:underline">
                   {moment(createdAt).format("MMM DD")}
                 </p>
-                <p className="text-gray-600 opacity-50 text-xs italic pl-1">
-                  {`updated ${moment(updatedAt).format("MMM DD")}`}
-                </p>
-              </>
-            )}
+              ) : (
+                <>
+                  <p className="text-gray-600 hover:underline">
+                    {moment(createdAt).format("MMM DD")}
+                  </p>
+                  <p className="text-gray-600 opacity-50 text-xs italic pl-1">
+                    {`updated ${moment(updatedAt).format("MMM DD")}`}
+                  </p>
+                </>
+              )}
+            </div>
+            <CardEllipsis id={id} author={user} setIsFormOpen={setIsFormOpen} />
           </div>
-          <CardEllipsis id={id} author={user} setIsFormOpen={setIsFormOpen} />
-        </div>
-        <p className="text-gray-900 pb-2 break-all">{chirp}</p>
-      </>
-    ) : (
-      <UpdateChirpForm
-        id={id}
-        originalText={chirp}
-        setIsFormOpen={setIsFormOpen}
-      />
+          <p className="text-gray-900 pb-2 break-all">{chirp}</p>
+        </>
+      </UpdateChirp>
     );
 
     if (ref)
