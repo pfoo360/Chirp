@@ -11,7 +11,7 @@ On a serious note, this app was primarily an excuse to learn/test/implement tRPC
 Click the button below to view the app
 <br/>
 <br/>
-[<img src="https://raw.githubusercontent.com/pfoo360/Chirp/main/screenshots/logo.png" width="163px" />](https://nepenthes.vercel.app/)
+[<img src="https://raw.githubusercontent.com/pfoo360/Chirp/main/screenshots/logo.png" width="163px" />](https://chirp-seven.vercel.app/)
 
 # Features
 
@@ -150,6 +150,7 @@ If a user visits a username that does not exist, he/she will be greeted with a c
 - [Infinite data with tRPC (for infinite scroll )](https://trpc.io/docs/useInfiniteQuery)
 - [Cursor-based pagination with Prisma (for infinite scroll)](https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination)
 - [Forwarding refs with TypeScript (for infinite scroll)](https://www.carlrippon.com/react-forwardref-typescript/)
+- [FordwardRefs with anonymous functions can throw an ESLint error](https://stackoverflow.com/questions/71633713/error-component-definition-is-missing-display-name-react-display-name-with-reac)
 - [Update cache in tRPC](https://trpc.io/docs/useContext)
 - [Abort procedure calls in tRPC](https://trpc.io/docs/aborting-procedure-calls)
 - [Web Dev Simplified's "Learn tRPC In 45 Minutes"](https://www.youtube.com/watch?v=UfUbBWIFdJs)
