@@ -16,7 +16,7 @@ model User {
   email         String    @unique
   password      String
   description   String?
-  displayName   String    @unique
+  displayName   String
   emailVerified DateTime?
   image         String?
   createdAt     DateTime  @default(now())
