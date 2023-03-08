@@ -33,7 +33,7 @@ export default function Home() {
       </p>
       <Link
         href="https://github.com/pfoo360"
-        className="text-base font-bold ml-5 mt-5 text-gray-900 decoration-dotted hover:underline hover:cursor-pointer hover:text-sky-400"
+        className="text-base font-bold ml-5 text-gray-900 decoration-dotted hover:underline hover:cursor-pointer hover:text-sky-400"
       >
         Click here for my GitHub!
       </Link>
