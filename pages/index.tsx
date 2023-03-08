@@ -1,6 +1,8 @@
+import Head from "next/head";
 import NavBar from "@/components/NavBar/NavBar";
 import Link from "next/link";
-import Head from "next/head";
+import { GetServerSideProps } from "next/types";
+import getServerSessionAndUser from "@/utils/getServerSessionAndUser";
 
 export default function Home() {
   return (
@@ -34,3 +36,13 @@ export default function Home() {
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const sessionAndUser = await getServerSessionAndUser({ req, res });
+
+  return {
+    props: {
+      user: sessionAndUser?.user || null,
+    },
+  };
+};
