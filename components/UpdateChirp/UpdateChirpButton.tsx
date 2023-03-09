@@ -1,13 +1,16 @@
-import { FC, MouseEvent, Dispatch, SetStateAction } from "react";
+import { FC, MouseEvent } from "react";
 import useUser from "@/hooks/useUser";
+import { useUpdateChirpContext } from "@/components/UpdateChirp/UpdateChirpContext";
+import { useCardContext } from "@/components/Card/CardContext";
 
-interface UpdateChirpProps {
-  authorId: string;
-  setIsFormOpen: Dispatch<SetStateAction<boolean>>;
-}
-
-const UpdateChirp: FC<UpdateChirpProps> = ({ authorId, setIsFormOpen }) => {
+const UpdateChirpButton: FC = () => {
   const userCtx = useUser();
+  const { setIsFormOpen } = useUpdateChirpContext();
+  const {
+    chirp: {
+      user: { id: authorId },
+    },
+  } = useCardContext();
 
   const handleClick = async (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -26,4 +29,4 @@ const UpdateChirp: FC<UpdateChirpProps> = ({ authorId, setIsFormOpen }) => {
   );
 };
 
-export default UpdateChirp;
+export default UpdateChirpButton;

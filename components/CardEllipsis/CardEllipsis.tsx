@@ -1,16 +1,16 @@
-import { MouseEvent, useState, FC, Dispatch, SetStateAction } from "react";
+import { MouseEvent, useState, FC } from "react";
 import DeleteChirp from "@/components/DeleteChirp/DeleteChirp";
-import UpdateChirpBtn from "@/components/UpdateChirpBtn/UpdateChirpBtn";
+import UpdateChirp from "@/components/UpdateChirp/UpdateChirp";
 import useUser from "@/hooks/useUser";
+import { useCardContext } from "@/components/Card/CardContext";
 
-interface CardEllipsisProps {
-  id: string;
-  author: { id: string; username: string; displayName: string };
-  setIsFormOpen: Dispatch<SetStateAction<boolean>>;
-}
-
-const CardEllipsis: FC<CardEllipsisProps> = ({ id, author, setIsFormOpen }) => {
+const CardEllipsis: FC = () => {
   const userCtx = useUser();
+  const {
+    chirp: {
+      user: { id: authorId },
+    },
+  } = useCardContext();
   const [isOpen, setIsOpen] = useState(false);
 
   const handleCardEllipsis = (e: MouseEvent<HTMLDivElement>) => {
@@ -18,7 +18,7 @@ const CardEllipsis: FC<CardEllipsisProps> = ({ id, author, setIsFormOpen }) => {
     setIsOpen((prev) => !prev);
   };
 
-  if (userCtx?.id !== author.id) return null;
+  if (userCtx?.id !== authorId) return null;
   return (
     <>
       <div
@@ -36,11 +36,8 @@ const CardEllipsis: FC<CardEllipsisProps> = ({ id, author, setIsFormOpen }) => {
             className="fixed inset-0 z-[1000]"
           />
           <div className="absolute z-[1000] rounded-xl border drop-shadow-xl right-8">
-            <DeleteChirp id={id} authorId={author.id} />
-            <UpdateChirpBtn
-              authorId={author.id}
-              setIsFormOpen={setIsFormOpen}
-            />
+            <DeleteChirp />
+            <UpdateChirp.Button />
           </div>
         </>
       ) : null}

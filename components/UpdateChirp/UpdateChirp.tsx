@@ -5,34 +5,31 @@ import {
   MouseEvent,
   ChangeEvent,
   useCallback,
-  Dispatch,
-  SetStateAction,
 } from "react";
 import Schema from "@/schema/";
 import trpc from "@/lib/trpc";
 import useUser from "@/hooks/useUser";
+import { useCardContext } from "@/components/Card/CardContext";
+import UpdateChirpContext from "@/components/UpdateChirp/UpdateChirpContext";
+import UpdateChirpButton from "@/components/UpdateChirp/UpdateChirpButton";
 
 interface UpdateChirp {
-  id: string;
-  originalText: string;
-  userId: string;
-  isFormOpen: boolean;
-  setIsFormOpen: Dispatch<SetStateAction<boolean>>;
   children: JSX.Element;
 }
 
-const UpdateChirp: FC<UpdateChirp> = ({
-  id,
-  originalText,
-  userId,
-  isFormOpen,
-  setIsFormOpen,
-  children,
-}) => {
+const UpdateChirp: FC<UpdateChirp> & { Button: FC } = ({ children }) => {
   const userCtx = useUser();
+  const {
+    chirp: {
+      id,
+      user: { id: authorId },
+      chirp: originalText,
+    },
+  } = useCardContext();
 
   const utils = trpc.useContext();
 
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const [updateText, setUpdateText] = useState(originalText ?? "");
   const [chirpError, setChirpError] = useState(true);
 
@@ -106,14 +103,26 @@ const UpdateChirp: FC<UpdateChirp> = ({
 
   const handleSubmit = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    if (chirpError || isSubmitting || userCtx?.id !== userId) return;
+    if (chirpError || isSubmitting || userCtx?.id !== authorId) return;
     if (updateText === originalText) return setIsFormOpen(false);
     mutate({ id, updateText });
   };
 
-  if (!isFormOpen) return children;
-  if (userCtx?.id !== userId) return children;
-  if (isFormOpen && userCtx.id === userId)
+  if (!isFormOpen)
+    return (
+      <UpdateChirpContext.Provider value={{ isFormOpen, setIsFormOpen }}>
+        {children}
+      </UpdateChirpContext.Provider>
+    );
+
+  if (userCtx?.id !== authorId)
+    return (
+      <UpdateChirpContext.Provider value={{ isFormOpen, setIsFormOpen }}>
+        {children}
+      </UpdateChirpContext.Provider>
+    );
+
+  if (isFormOpen && userCtx.id === authorId)
     return (
       <form className="flex flex-col justify-center items-center">
         <textarea
@@ -150,7 +159,14 @@ const UpdateChirp: FC<UpdateChirp> = ({
         </div>
       </form>
     );
-  return children;
+
+  return (
+    <UpdateChirpContext.Provider value={{ isFormOpen, setIsFormOpen }}>
+      {children}
+    </UpdateChirpContext.Provider>
+  );
 };
+
+UpdateChirp.Button = UpdateChirpButton;
 
 export default UpdateChirp;

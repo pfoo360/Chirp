@@ -1,14 +1,16 @@
 import { FC, MouseEvent } from "react";
 import trpc from "@/lib/trpc";
 import useUser from "@/hooks/useUser";
+import { useCardContext } from "@/components/Card/CardContext";
 
-interface DeleteChirp {
-  id: string;
-  authorId: string;
-}
-
-const DeleteChirp: FC<DeleteChirp> = ({ id, authorId }) => {
+const DeleteChirp: FC = () => {
   const userCtx = useUser();
+  const {
+    chirp: {
+      id,
+      user: { id: authorId },
+    },
+  } = useCardContext();
   const utils = trpc.useContext();
   const {
     mutate,
