@@ -22,12 +22,13 @@ Click the button below to view the app
 - Infinite scroll pagination
 - DB and UI are in sync at all times thanks to cache modifications
 - Conditionally renders CSS (ex: buttons are 'greyed out' when submitting, red borders when errors) for better UX
-- Context holds user state
+- Context api, composable and compound components
 - Mobile-first design
 - and much more!
 
 # Technologies
 
+- React
 - NextJS
 - Prisma
 - PostgreSQL
@@ -44,6 +45,7 @@ Click the button below to view the app
 - Implement tRPC in a project to perform CRUD operations
 - Learn about zod
 - Implement Zod in a project
+- Implement composable and compound components
 - Familiarize myself with TypeScript
 - Familiarize myself with Prisma's ORM
 - Deploy an app
@@ -155,3 +157,4 @@ If a user visits a username that does not exist, he/she will be greeted with a c
 - [Abort procedure calls in tRPC](https://trpc.io/docs/aborting-procedure-calls)
 - [Web Dev Simplified's "Learn tRPC In 45 Minutes"](https://www.youtube.com/watch?v=UfUbBWIFdJs)
 - [Web Dev Simplified's "Learn Zod In 30 Minutes"](https://www.youtube.com/watch?v=L6BE-U3oy80)
+- [Composable & Compound Components](https://www.youtube.com/watch?v=vPRdY87_SH0)
